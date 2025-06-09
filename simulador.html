@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador de Produtividade - AgroInteligente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Estilos compartilhados do site -->
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="simulador.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="banner-content">
+      <h1>Simulador de Produtividade</h1>
+      <p>Veja como fatores monitorados por sensores IoT impactam a produtividade agrícola.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="simulador-section">
+      <div class="fatores-tabela">
+        <div class="fator-row">
+          <div class="fator-nome">
+            Umidade do Solo
+          </div>
+          <div class="fator-valor">
+            74% <span class="fator-status bom">🟢 Bom</span>
+          </div>
+          <div class="fator-comentario">
+            💧 Solo bem irrigado, ideal para o crescimento das plantas.
+          </div>
+        </div>
+        <div class="fator-row">
+          <div class="fator-nome">
+            Temperatura Ambiente
+          </div>
+          <div class="fator-valor">
+            30°C <span class="fator-status medio">🟡Médio</span>
+          </div>
+          <div class="fator-comentario">
+            ☀️ Temperatura um pouco elevada. Considere monitorar para evitar estresse nas plantas.
+          </div>
+        </div>
+        <div class="fator-row">
+          <div class="fator-nome">
+            Nível de Nutrientes
+          </div>
+          <div class="fator-valor">
+            58 mg/kg <span class="fator-status ruim">🔴Ruim</span>
+          </div>
+          <div class="fator-comentario">
+            🧪 Baixo teor de nutrientes. Recomenda-se a aplicação de fertilizante.
+          </div>
+        </div>
+        <div class="fator-row">
+          <div class="fator-nome">
+            Incidência de Pragas
+          </div>
+          <div class="fator-valor">
+            2 por m² <span class="fator-status bom">🟢Bom</span>
+          </div>
+          <div class="fator-comentario">
+            🐞 Controle de pragas eficiente. Continue monitorando.
+          </div>
+        </div>
+        <div class="fator-row">
+          <div class="fator-nome">
+            Luminosidade
+          </div>
+          <div class="fator-valor">
+            6.200 lux <span class="fator-status bom">🟢Bom</span>
+          </div>
+          <div class="fator-comentario">
+            🌞 Luminosidade adequada para o desenvolvimento das culturas.
+          </div>
+        </div>
+      </div>
+      <div class="simulador-resumo">
+        <div class="nota-geral">
+          <span class="nota-label">Nota Geral:</span>
+          <span class="nota-valor ruim">6.8</span>
+        </div>
+        <div class="resumo-recomendacao">
+          <span>🔎 <strong>Resumo:</strong> A produtividade está razoável, mas pode ser melhorada.</span>
+          <p>
+            Recomenda-se atenção especial ao nível de nutrientes e à temperatura ambiente.
+            Melhore a adubação e, se possível, adote práticas para reduzir o estresse térmico nas plantas.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+  <div class="footer-container">
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="simulador.html">Simulador</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="contato.html">Fale Conosco</a>
+    </nav>
+    <div class="footer-location-logo">
+      <span class="footer-location">
+        Você está em: <strong id="footerPageName">Tecnologia no Campo</strong>
+      </span>
+      
+    </div>
+    <div class="footer-copy">
+      © 2025 AgroInteligente. Todos os direitos reservados.
+    </div>
+  </div>
+</footer>
+<script>
+  // Atualizar localização no footer
+  const pageNames = {
+    "index.html": "Home",
+    "simulador.html": "Simulador",
+    "sobre.html": "Sobre Nós",
+    "tecnologia.html": "Tecnologia no Campo",
+    "contato.html": "Fale Conosco"
+  };
+  let path = window.location.pathname.split('/').pop();
+  if (!path || path === "") path = "tecnologia.html";
+  let pageName = pageNames[path] || document.title || "Tecnologia no Campo";
+  document.getElementById("footerPageName").textContent = pageName;
+</script>
+</body>
+</html>

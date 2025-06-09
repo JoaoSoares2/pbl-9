@@ -1,0 +1,100 @@
+.site-footer {
+  background: linear-gradient(90deg, #19b464 0%, #11824a 100%);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 -2px 8px rgba(25,180,100,0.06);
+  color: #fff;
+  margin-top: 2.5rem;
+  padding: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.2rem 1.2rem 0.6rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin-bottom: 0.9rem;
+  justify-content: center;
+}
+
+.footer-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.01rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 18px;
+  transition: background 0.13s, color 0.13s;
+  letter-spacing: 0.03em;
+}
+
+.footer-nav a:hover, .footer-nav a.active {
+  background: #fff;
+  color: #19b464;
+}
+
+.footer-location-logo {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 0.7rem;
+}
+.footer-location {
+  font-size: 1.06rem;
+  color: #fff;
+  background: #19b464;
+  padding: 0.38rem 1rem 0.38rem 1rem;
+  border-radius: 10px;
+  opacity: 0.9;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 8px rgba(25,180,100,0.08);
+}
+.footer-location strong {
+  color: #ffbe30;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.fiap-logo {
+  height: 34px;
+  width: auto;
+  background: #fff;
+  border-radius: 6px;
+  padding: 3px 9px 3px 9px;
+  box-shadow: 0 1px 8px rgba(34,34,51,0.08);
+  display: inline-block;
+}
+
+.footer-copy {
+  font-size: 0.98rem;
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .footer-container {
+    padding: 1rem 0.5rem 0.6rem 0.5rem;
+  }
+  .footer-nav {
+    gap: 0.7rem;
+    font-size: 0.98rem;
+  }
+  .footer-location-logo {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .fiap-logo {
+    height: 26px;
+    padding: 2px 7px 2px 7px;
+  }
+}

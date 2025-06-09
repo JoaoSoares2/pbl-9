@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Sobre Nós - AgroInteligente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="sobre.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="banner-content">
+      <h1>Sobre Nós</h1>
+      <p>Conheça nosso projeto, nossa missão e a equipe por trás do AgroInteligente.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="sobre-funcao">
+      <h2 class="section-title">Função do Projeto</h2>
+      <p>
+        O <strong>AgroInteligente</strong> foi desenvolvido para solucionar os desafios da agricultura moderna, trazendo tecnologia e inteligência para o campo. Nosso objetivo é aumentar a produtividade, sustentabilidade e rentabilidade das propriedades rurais por meio de monitoramento, automação e análise de dados.
+      </p>
+    </section>
+
+    <section class="sobre-missao">
+      <h2 class="section-title">Missão, Visão e Valores</h2>
+      <div class="missao-blocos">
+        <div class="missao-card">
+          <span class="missao-icone" aria-hidden="true">🎯</span>
+          <strong>Missão</strong>
+          <p>Promover a transformação digital no agronegócio, tornando a tecnologia acessível e útil para todos os produtores.</p>
+        </div>
+        <div class="missao-card">
+          <span class="missao-icone" aria-hidden="true">👁️</span>
+          <strong>Visão</strong>
+          <p>Ser referência nacional em soluções inteligentes para o campo, contribuindo para uma agricultura mais eficiente e sustentável.</p>
+        </div>
+        <div class="missao-card">
+          <span class="missao-icone" aria-hidden="true">💚</span>
+          <strong>Valores</strong>
+          <p>Inovação, sustentabilidade, ética, compromisso com o cliente e trabalho em equipe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sobre-motivacao">
+      <h2 class="section-title">Motivação</h2>
+      <p>
+        A crescente demanda por alimentos e a necessidade de produção sustentável motivaram a criação do AgroInteligente. Queremos ajudar produtores a utilizar recursos de modo eficiente, reduzindo desperdícios, custos e impactos ambientais, ao mesmo tempo em que aumentam seus resultados.
+      </p>
+    </section>
+
+    <section class="sobre-processo">
+      <h2 class="section-title">Como Desenvolvemos</h2>
+      <p>
+        O projeto foi idealizado a partir de pesquisas sobre as principais dores do campo. Utilizamos métodos ágeis, prototipagem rápida e validação constante junto a especialistas. O desenvolvimento incluiu estudo de sensores IoT, criação de simuladores e interface amigável para facilitar o uso por produtores de todos os perfis.
+      </p>
+    </section>
+
+    <section class="sobre-equipe">
+      <h2 class="section-title">Nossa Equipe</h2>
+      <div class="equipe-lista">
+        <div class="equipe-card">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="João Soares" class="equipe-foto">
+          <div class="equipe-info">
+            <strong>João Soares</strong>
+            
+          </div>
+        </div>
+        <div class="equipe-card">
+          <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Gustavo Melanda" class="equipe-foto">
+          <div class="equipe-info">
+            <strong>Gustavo Melanda</strong>
+            
+          </div>
+        </div>
+        <div class="equipe-card">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Diego Yoshinaga" class="equipe-foto">
+          <div class="equipe-info">
+            <strong>Diego Yoshinaga</strong>
+            
+          </div>
+        </div>
+        <div class="equipe-card">
+          <img src="https://randomuser.me/api/portraits/men/51.jpg" alt="Gustavo Oliveira" class="equipe-foto">
+          <div class="equipe-info">
+            <strong>Gustavo Oliveira</strong>
+            
+          </div>
+        </div>
+        <div class="equipe-card">
+          <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Felipe Augusto" class="equipe-foto">
+          <div class="equipe-info">
+            <strong>Felipe Augusto</strong>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="simulador.html">Simulador</a>
+        <a href="sobre.html">Sobre Nós</a>
+        <a href="contato.html">Fale Conosco</a>
+      </nav>
+      <div class="footer-location-logo">
+        <span class="footer-location">
+          Você está em: <strong id="footerPageName">Sobre Nós</strong>
+        </span>
+       
+      </div>
+      <div class="footer-copy">
+        © 2025 AgroInteligente. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Atualizar localização no footer
+    const pageNames = {
+      "index.html": "Home",
+      "simulador.html": "Simulador",
+      "sobre.html": "Sobre Nós",
+      "contato.html": "Fale Conosco"
+    };
+    let path = window.location.pathname.split('/').pop();
+    if (!path || path === "") path = "sobre.html";
+    let pageName = pageNames[path] || document.title || "Sobre Nós";
+    document.getElementById("footerPageName").textContent = pageName;
+  </script>
+</body>
+</html>

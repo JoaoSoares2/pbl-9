@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Fale Conosco - AgroInteligente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="fale_conosco.css">
+  <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+  <header>
+    <div class="banner-content">
+      <h1>Fale Conosco</h1>
+      <p>Queremos ouvir você! Envie dúvidas, sugestões ou mensagens ao nosso time.</p>
+    </div>
+  </header>
+  <main>
+    <section class="contato-section">
+      <h2>Entre em Contato</h2>
+      <form id="contatoForm" novalidate>
+        <div class="form-group">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+          <span class="error-message" id="nomeError"></span>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+          <span class="error-message" id="emailError"></span>
+        </div>
+        <div class="form-group">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="6" maxlength="500" placeholder="Descreva sua mensagem (mínimo 30 caracteres)" required></textarea>
+          <div class="mensagem-info">
+            <span id="mensagemContador">0</span> / 500 caracteres
+          </div>
+          <span class="error-message" id="mensagemError"></span>
+        </div>
+        <button type="submit" class="btn-submit">Enviar Mensagem</button>
+        <div class="success-message" id="successMessage" style="display:none;">
+          <svg width="32" height="32" fill="none"><circle cx="16" cy="16" r="16" fill="#19b464" opacity="0.16"/><path d="M9.5 16.5l5 5 8-10" stroke="#19b464" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Sua mensagem foi enviada com sucesso! Em breve entraremos em contato.</span>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script>
+    const form = document.getElementById('contatoForm');
+    const nome = document.getElementById('nome');
+    const email = document.getElementById('email');
+    const mensagem = document.getElementById('mensagem');
+    const nomeError = document.getElementById('nomeError');
+    const emailError = document.getElementById('emailError');
+    const mensagemError = document.getElementById('mensagemError');
+    const mensagemContador = document.getElementById('mensagemContador');
+    const successMessage = document.getElementById('successMessage');
+
+    mensagem.addEventListener('input', () => {
+      mensagemContador.textContent = mensagem.value.length;
+    });
+
+    function validarNome(valor) {
+      if (!valor.trim()) return "Preencha seu nome completo.";
+      if (!valor.trim().includes(" ")) return "Digite nome e sobrenome.";
+      return "";
+    }
+    function validarEmail(valor) {
+      if (!valor.trim()) return "Preencha o e-mail.";
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!regex.test(valor.trim())) return "E-mail em formato inválido.";
+      return "";
+    }
+    function validarMensagem(valor) {
+      if (valor.trim().length < 30) return "A mensagem deve ter no mínimo 30 caracteres.";
+      if (valor.trim().length > 500) return "Mensagem excedeu 500 caracteres.";
+      return "";
+    }
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      nomeError.textContent = emailError.textContent = mensagemError.textContent = "";
+      nome.classList.remove('has-error');
+      email.classList.remove('has-error');
+      mensagem.classList.remove('has-error');
+
+      let valido = true;
+
+      const erroNome = validarNome(nome.value);
+      if (erroNome) {
+        nomeError.textContent = erroNome;
+        nome.classList.add('has-error');
+        valido = false;
+      }
+      const erroEmail = validarEmail(email.value);
+      if (erroEmail) {
+        emailError.textContent = erroEmail;
+        email.classList.add('has-error');
+        valido = false;
+      }
+      const erroMsg = validarMensagem(mensagem.value);
+      if (erroMsg) {
+        mensagemError.textContent = erroMsg;
+        mensagem.classList.add('has-error');
+        valido = false;
+      }
+      if (valido) {
+        form.querySelectorAll('input, textarea, button').forEach(el => el.disabled = true);
+        setTimeout(() => {
+          successMessage.style.display = "flex";
+          form.reset();
+          mensagemContador.textContent = "0";
+          form.querySelectorAll('input, textarea, button').forEach(el => el.disabled = false);
+        }, 1000);
+        setTimeout(() => {
+          successMessage.style.display = "none";
+        }, 6000);
+      }
+    });
+  </script>
+  <footer class="site-footer">
+  <div class="footer-container">
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="simulador.html">Simulador</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="contato.html">Fale Conosco</a>
+    </nav>
+    <div class="footer-location-logo">
+      <span class="footer-location">
+        Você está em: <strong id="footerPageName">Tecnologia no Campo</strong>
+      </span>
+      
+    </div>
+    <div class="footer-copy">
+      © 2025 AgroInteligente. Todos os direitos reservados.
+    </div>
+  </div>
+</footer>
+<script>
+  // Atualizar localização no footer
+  const pageNames = {
+    "index.html": "Home",
+    "simulador.html": "Simulador",
+    "sobre.html": "Sobre Nós",
+    "tecnologia.html": "Tecnologia no Campo",
+    "contato.html": "Fale Conosco"
+  };
+  let path = window.location.pathname.split('/').pop();
+  if (!path || path === "") path = "tecnologia.html";
+  let pageName = pageNames[path] || document.title || "Tecnologia no Campo";
+  document.getElementById("footerPageName").textContent = pageName;
+</script>
+</body>
+</html>
