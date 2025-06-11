@@ -325,3 +325,13 @@ textarea.has-error {
   .hamburger-btn { right: 4vw; top: 16px; }
   .hamburger-nav { right: 4vw; top: 58px; min-width: 140px; padding: 1rem 2vw;}
 }
+.img-home, .img-tec, .img-sobre, .img-contato {
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+  border-radius: 18px;
+  margin: 1.3rem auto 2rem auto;
+  display: block;
+  box-shadow: 0 4px 16px rgba(25,180,100,0.10);
+  object-fit: cover;
+}

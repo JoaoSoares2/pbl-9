@@ -2,29 +2,24 @@
 
 body, html {
   font-family: 'Montserrat', Arial, sans-serif;
-}
-
-:root {
-  --primary: #19b464;
-  --primary-dark: #11824a;
-  --accent: #ffbe30;
-  --white: #fff;
-  --gray-light: #f5f7fa;
-  --radius: 18px;
-  --shadow: 0 6px 24px rgba(25, 180, 100, 0.07), 0 1.5px 8px rgba(34, 34, 51, 0.08);
+  background: #f7fafd;
+  color: #1b2a2f;
 }
 
 main {
   max-width: 900px;
   margin: -50px auto 0 auto;
-  padding: 2.2rem 2.2rem 2.3rem 2.2rem;
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  padding: 2.7rem 2.5rem 3rem 2.5rem;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 36px rgba(25,180,100,0.10), 0 2.5px 12px rgba(34,34,51,0.09);
   position: relative;
   z-index: 10;
   animation: fadein 1.2s cubic-bezier(.22,.68,.56,1.06);
-  font-family: 'Montserrat', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  align-items: center;
 }
 
 @keyframes fadein {
@@ -32,13 +27,22 @@ main {
   to   { opacity:1; transform: translateY(0);}
 }
 
+section {
+  margin-bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .section-title {
-  color: var(--primary-dark);
+  color: #19b464;
   font-size: 1.34rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
   letter-spacing: 0.02em;
-  font-family: 'Montserrat', Arial, sans-serif;
+  text-align: center;
+  width: 100%;
 }
 
 .sobre-funcao,
@@ -47,6 +51,10 @@ main {
 .sobre-processo,
 .sobre-equipe {
   margin-bottom: 2.2rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .sobre-funcao p,
@@ -55,7 +63,8 @@ main {
   font-size: 1.08rem;
   color: #2d2d2d;
   margin-bottom: 0;
-  font-family: 'Montserrat', Arial, sans-serif;
+  text-align: center;
+  width: 100%;
 }
 
 .missao-blocos {
@@ -64,11 +73,12 @@ main {
   gap: 1.3rem;
   justify-content: center;
   margin-top: 1.1rem;
+  width: 100%;
 }
 
 .missao-card {
   background: linear-gradient(120deg,#f7fff7 0%,#eafff1 100%);
-  border-radius: var(--radius);
+  border-radius: 18px;
   box-shadow: 0 1px 6px rgba(25,180,100,0.10);
   padding: 1.3rem 1.2rem 1.1rem 1.2rem;
   min-width: 200px;
@@ -81,7 +91,6 @@ main {
   transition: box-shadow 0.13s, transform 0.12s;
   font-family: 'Montserrat', Arial, sans-serif;
 }
-
 .missao-card:hover {
   box-shadow: 0 3px 16px rgba(25,180,100,0.13);
   transform: scale(1.03);
@@ -111,6 +120,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.6rem 3.3rem;
+  width: 100%;
 }
 
 .equipe-card {
@@ -135,13 +145,13 @@ main {
   height: 74px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--primary);
+  border: 3px solid #19b464;
   margin-bottom: 0.7rem;
   box-shadow: 0 1px 8px rgba(34,34,51,0.07);
 }
 .equipe-info strong {
   font-size: 1.07rem;
-  color: var(--primary-dark);
+  color: #11824a;
   font-weight: 700;
   margin-bottom: 0.13rem;
   display: block;
@@ -176,4 +186,21 @@ main {
     min-width: unset;
     width: 98vw;
   }
+  main {
+    padding: 0.7rem 0.05rem 1rem 0.05rem;
+  }
+  section, .section-title, p {
+    width: 100vw;
+    box-sizing: border-box;
+  }
+}
+.img-home, .img-tec, .img-sobre, .img-contato {
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+  border-radius: 18px;
+  margin: 1.3rem auto 2rem auto;
+  display: block;
+  box-shadow: 0 4px 16px rgba(25,180,100,0.10);
+  object-fit: cover;
 }

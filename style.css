@@ -1,74 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-:root {
-  --primary: #19b464;
-  --primary-dark: #11824a;
-  --secondary: #f5f7fa;
-  --accent: #ffbe30;
-  --white: #ffffff;
-  --text: #223;
-  --gray: #eef1f4;
-  --radius: 18px;
-  --shadow: 0 6px 24px rgba(25, 180, 100, 0.10), 0 1.5px 8px rgba(34, 34, 51, 0.08);
-}
-
-body {
-  margin: 0;
+body, html {
   font-family: 'Montserrat', Arial, sans-serif;
-  background: var(--secondary);
-  color: var(--text);
-  min-height: 100vh;
-}
-
-/* Header / Banner */
-header {
-  background: linear-gradient(120deg, rgba(25,180,100,0.95) 0%, rgba(34,34,51,0.75) 100%),
-    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-  min-height: 360px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  color: var(--white);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.banner-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem 1.5rem;
-}
-
-.banner-content h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
-  text-shadow: 0 3px 24px rgba(0,0,0,0.3);
-}
-
-.banner-content p {
-  font-size: 1.3rem;
-  max-width: 650px;
-  margin: 0 auto 2.5rem auto;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  background: #f7fafd;
+  color: #1b2a2f;
 }
 
 main {
-  max-width: 1060px;
-  margin: -70px auto 0 auto;
-  padding: 2.2rem 2.5rem 3rem 2.5rem;
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  max-width: 980px;
+  margin: -54px auto 0 auto;
+  padding: 2.7rem 2.5rem 3rem 2.5rem;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 36px rgba(25,180,100,0.10), 0 2.5px 12px rgba(34,34,51,0.09);
   position: relative;
   z-index: 10;
-  min-height: 500px;
   animation: fadein 1.2s cubic-bezier(.22,.68,.56,1.06);
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  align-items: center;
 }
 
 @keyframes fadein {
@@ -76,163 +27,252 @@ main {
   to   { opacity:1; transform: translateY(0);}
 }
 
-/* Intro Section */
-.intro {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.intro h2 {
-  font-size: 1.7rem;
-  color: var(--primary-dark);
-  margin-bottom: 0.6rem;
-  font-weight: 700;
-}
-
-.intro p {
-  color: #393;
-  font-size: 1.08rem;
-  margin-bottom: 0.2rem;
-  font-weight: 500;
-  letter-spacing: 0.1px;
-}
-
-/* Quick Access Buttons */
-.quick-access {
+section {
+  margin-bottom: 0;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2.2rem 0;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }
 
-.quick-access a {
+h2 {
+  color: #19b464;
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: 0.9rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  width: 100%;
+}
+
+p, ul {
+  font-size: 1.09rem;
+  color: #24303a;
+  line-height: 1.7;
+  text-align: center;
+  width: 100%;
+}
+
+ul {
+  margin: 1rem 0 1.5rem 0;
+  padding: 0;
   display: inline-block;
-  padding: 1.1rem 2.5rem;
-  background: var(--primary);
-  color: var(--white);
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 1.13rem;
-  text-decoration: none;
-  box-shadow: 0 2px 12px rgba(25,180,100,0.11);
-  transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
-  position: relative;
-  overflow: hidden;
-  border: none;
-  outline: none;
-  letter-spacing: 0.5px;
+  text-align: left;
 }
 
-.quick-access a:hover,
-.quick-access a:focus {
-  background: var(--accent);
-  color: var(--primary-dark);
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 2px 24px rgba(255,190,48,0.19);
+ul li {
+  margin-left: 1.4em;
+  margin-bottom: 0.5em;
+  text-align: left;
 }
 
-.quick-access a::after {
-  content: '';
+.img-home {
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+  border-radius: 18px;
+  margin: 1.3rem auto 2rem auto;
   display: block;
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(90deg,rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.02) 100%);
-  pointer-events: none;
-  border-radius: 50px;
+  box-shadow: 0 4px 16px rgba(25,180,100,0.10);
+  object-fit: cover;
 }
 
-/* Highlights / Features */
-.highlights {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 2.2rem 1.5rem;
-  margin-top: 2.8rem;
+.home-intro {
+  padding-bottom: 0.6rem;
+  border-bottom: 1.5px solid #e9f8ee;
 }
 
-.highlight {
-  flex: 1 1 210px;
-  background: linear-gradient(120deg,#f7fff7 0%,#eafff1 100%);
-  border-radius: var(--radius);
-  padding: 2.1rem 1.3rem 1.5rem 1.3rem;
-  text-align: center;
-  box-shadow: 0 2px 14px rgba(25,180,100,0.07);
-  min-width: 200px;
-  max-width: 260px;
-  position: relative;
-  transition: box-shadow 0.18s, transform 0.16s;
-}
-
-.highlight:hover, .highlight:focus-within {
-  box-shadow: 0 8px 32px rgba(25,180,100,0.13);
-  transform: translateY(-6px) scale(1.025);
-  z-index: 2;
-}
-
-.highlight svg {
-  font-size: 3rem;
-  margin-bottom: 0.7rem;
-  color: var(--primary);
-  filter: drop-shadow(0 2px 8px #eafff1);
-  transition: color 0.2s;
-}
-
-.highlight h3 {
-  font-size: 1.16rem;
-  color: var(--primary-dark);
-  margin-bottom: 0.6rem;
+.home-intro h2 {
+  font-size: 1.33rem;
+  color: #11824a;
   font-weight: 700;
-  letter-spacing: 0.2px;
+  margin-bottom: 0.6rem;
+}
+.home-intro p {
+  font-size: 1.12rem;
 }
 
-.highlight p {
-  font-size: 1.01rem;
-  color: #444;
+.home-simulador, .home-tec, .home-servicos, .home-contato {
+  padding: 1.25rem 0 0.6rem 0;
+  border-bottom: 1.5px solid #e9f8ee;
+}
+
+.home-servicos {
+  border-bottom: none;
+}
+
+.home-simulador ul {
+  margin-bottom: 1.1rem;
+  margin-top: 0.6rem;
+}
+
+.home-link-btn {
+  display: inline-block;
+  margin-top: 0.6rem;
+  background: linear-gradient(90deg,#19b464 70%, #ffbe30 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.08rem;
+  padding: 0.62rem 1.55rem;
+  border-radius: 11px;
+  text-decoration: none;
+  transition: background 0.16s, transform 0.13s, box-shadow 0.13s;
+  box-shadow: 0 2px 12px rgba(25,180,100,0.06);
   letter-spacing: 0.02em;
 }
+.home-link-btn:hover, .home-link-btn:focus {
+  background: #19b464;
+  color: #fff;
+  transform: scale(1.04);
+  box-shadow: 0 6px 20px rgba(25,180,100,0.10);
+}
 
-/* Responsive Design */
-@media (max-width: 900px) {
+.servicos-lista {
+  display: flex;
+  gap: 2.1rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+  margin-bottom: 0.7rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.servico-card {
+  flex: 1 1 230px;
+  background: linear-gradient(120deg,#f7fff7 0%,#eafff1 100%);
+  border-radius: 15px;
+  box-shadow: 0 1.5px 8px rgba(25,180,100,0.08);
+  padding: 1.3rem 1.2rem 1.05rem 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 190px;
+  max-width: 280px;
+  transition: box-shadow 0.13s, transform 0.12s, background 0.12s;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+}
+.servico-card:hover, .servico-card:focus-within {
+  box-shadow: 0 8px 28px rgba(25,180,100,0.14);
+  background: linear-gradient(120deg,#eafff1 0%,#f7fff7 100%);
+  border: 1.5px solid #19b464;
+  transform: translateY(-3px) scale(1.035);
+  z-index: 1;
+}
+.servico-icone {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: #ffbe30;
+}
+.servico-card strong {
+  color: #11824a;
+  margin-bottom: 0.2rem;
+  display: block;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+.servico-card p {
+  font-size: 1.01rem;
+  color: #223;
+  margin-top: 0.2rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.home-contato {
+  border-top: 1.5px dashed #e9f8ee;
+  padding-top: 2.2rem;
+  margin-top: 0.6rem;
+}
+
+.home-contato h2 {
+  color: #1a7c4a;
+}
+.home-contato p {
+  font-size: 1.08rem;
+}
+
+@media (max-width: 1050px) {
   main {
-    margin: -60px 1.2rem 0 1.2rem;
-    padding: 1.1rem 0.8rem 2rem 0.8rem;
+    max-width: 99vw;
+    padding: 2vw 1vw 2vw 1vw;
   }
-  .highlights {
-    gap: 2rem 0.5rem;
+}
+@media (max-width: 750px) {
+  main {
+    margin: -30px 0.5rem 0 0.5rem;
+    padding: 1.1rem 0.6rem 2rem 0.6rem;
+    border-radius: 14px;
+  }
+  .servicos-lista {
+    gap: 1.1rem;
   }
 }
 
-@media (max-width: 670px) {
-  .highlights {
+@media (max-width: 600px) {
+  .servicos-lista {
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.1rem;
   }
-  .highlight {
-    max-width: 98vw;
+  .servico-card {
+    max-width: 99vw;
     min-width: unset;
+    width: 99vw;
+  }
+  main {
+    padding: 0.7rem 0.05rem 1rem 0.05rem;
+  }
+  section, h2, p, ul {
+    width: 100vw;
+    box-sizing: border-box;
+  }
+  .img-home {
+    max-width: 98vw;
     width: 98vw;
   }
-  .banner-content h1 {
-    font-size: 1.5rem;
+}
+/* ...restante do CSS acima... */
+
+/* Animação de entrada para o h1 e para o parágrafo logo abaixo */
+.banner-content h1 {
+  opacity: 0;
+  transform: translateY(-40px) scale(0.92);
+  animation: h1-entrada 1.2s cubic-bezier(.22,.68,.56,1.06) 0.2s forwards;
+  background: linear-gradient(90deg, #19b464 30%, #ffbe30 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+          background-clip: text;
+          color: transparent;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.banner-content p {
+  opacity: 0;
+  transform: translateY(-25px) scale(0.96);
+  animation: p-entrada 1.2s cubic-bezier(.22,.68,.56,1.06) 0.7s forwards;
+  font-size: 1.15rem;
+  color: #094427;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+@keyframes h1-entrada {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
-  .banner-content p {
-    font-size: 1.03rem;
-  }
-  header {
-    min-height: 220px;
+}
+@keyframes p-entrada {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  background: var(--gray);
-  border-radius: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 8px;
-  opacity: 0.4;
-}
+/* ...restante do CSS... */
 

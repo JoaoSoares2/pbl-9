@@ -18,80 +18,147 @@
     </div>
   </header>
 
-  <main>
-    <section class="simulador-section">
-      <div class="fatores-tabela">
-        <div class="fator-row">
-          <div class="fator-nome">
-            Umidade do Solo
-          </div>
-          <div class="fator-valor">
-            74% <span class="fator-status bom">🟢 Bom</span>
-          </div>
-          <div class="fator-comentario">
-            💧 Solo bem irrigado, ideal para o crescimento das plantas.
-          </div>
-        </div>
-        <div class="fator-row">
-          <div class="fator-nome">
-            Temperatura Ambiente
-          </div>
-          <div class="fator-valor">
-            30°C <span class="fator-status medio">🟡Médio</span>
-          </div>
-          <div class="fator-comentario">
-            ☀️ Temperatura um pouco elevada. Considere monitorar para evitar estresse nas plantas.
-          </div>
-        </div>
-        <div class="fator-row">
-          <div class="fator-nome">
-            Nível de Nutrientes
-          </div>
-          <div class="fator-valor">
-            58 mg/kg <span class="fator-status ruim">🔴Ruim</span>
-          </div>
-          <div class="fator-comentario">
-            🧪 Baixo teor de nutrientes. Recomenda-se a aplicação de fertilizante.
-          </div>
-        </div>
-        <div class="fator-row">
-          <div class="fator-nome">
-            Incidência de Pragas
-          </div>
-          <div class="fator-valor">
-            2 por m² <span class="fator-status bom">🟢Bom</span>
-          </div>
-          <div class="fator-comentario">
-            🐞 Controle de pragas eficiente. Continue monitorando.
-          </div>
-        </div>
-        <div class="fator-row">
-          <div class="fator-nome">
-            Luminosidade
-          </div>
-          <div class="fator-valor">
-            6.200 lux <span class="fator-status bom">🟢Bom</span>
-          </div>
-          <div class="fator-comentario">
-            🌞 Luminosidade adequada para o desenvolvimento das culturas.
-          </div>
-        </div>
+  <!-- ... (HEAD, HEADER e FOOTER iguais ao seu padrão, css igual, só o MAIN muda) -->
+<main>
+  <section class="simulador-section">
+    <form id="simuladorForm" class="simulador-form">
+      <h2>Insira os dados dos sensores:</h2>
+      <label>
+        Umidade do Solo (%):
+        <input type="number" name="umidade" min="0" max="100" required>
+      </label>
+      <label>
+        Temperatura Ambiente (°C):
+        <input type="number" name="temperatura" min="0" max="60" required>
+      </label>
+      <label>
+        Nível de Nutrientes (mg/kg):
+        <input type="number" name="nutrientes" min="0" max="200" required>
+      </label>
+      <label>
+        Incidência de Pragas (por m²):
+        <input type="number" name="pragas" min="0" max="20" required>
+      </label>
+      <label>
+        Luminosidade (lux):
+        <input type="number" name="luz" min="0" max="10000" required>
+      </label>
+      <button type="submit">Simular</button>
+    </form>
+
+    <div id="resultadoSimulador" class="simulador-resultado" style="display:none;"></div>
+  </section>
+</main>
+
+<script>
+function avaliarFator(valor, bom, medio, labels) {
+  if (valor >= bom[0] && valor <= bom[1]) return {status: 'bom', emoji: '🟢', texto: labels.bom};
+  if (valor >= medio[0] && valor <= medio[1]) return {status: 'medio', emoji: '🟡', texto: labels.medio};
+  return {status: 'ruim', emoji: '🔴', texto: labels.ruim};
+}
+
+document.getElementById('simuladorForm').onsubmit = function(e) {
+  e.preventDefault();
+  const dados = Object.fromEntries(new FormData(this));
+
+  // Avaliações individuais
+  const fatores = [
+    {
+      nome: 'Umidade do Solo',
+      valor: Number(dados.umidade),
+      unidade: '%',
+      avaliacao: avaliarFator(Number(dados.umidade), [60,80], [40,59], {
+        bom: 'Solo bem irrigado, ideal para as plantas.',
+        medio: 'Solo precisando de atenção para irrigação.',
+        ruim: 'Umidade inadequada. Risco de estresse hídrico.'
+      })
+    },
+    {
+      nome: 'Temperatura Ambiente',
+      valor: Number(dados.temperatura),
+      unidade: '°C',
+      avaliacao: avaliarFator(Number(dados.temperatura), [20,28], [29,33], {
+        bom: 'Temperatura ideal para cultivo.',
+        medio: 'Temperatura elevada, monitorar.',
+        ruim: 'Temperatura fora do ideal. Pode prejudicar a lavoura.'
+      })
+    },
+    {
+      nome: 'Nível de Nutrientes',
+      valor: Number(dados.nutrientes),
+      unidade: 'mg/kg',
+      avaliacao: avaliarFator(Number(dados.nutrientes), [70,120], [60,69], {
+        bom: 'Níveis de nutrientes ótimos.',
+        medio: 'Níveis de nutrientes abaixo do ideal.',
+        ruim: 'Deficiência nutricional. Recomenda-se adubação.'
+      })
+    },
+    {
+      nome: 'Incidência de Pragas',
+      valor: Number(dados.pragas),
+      unidade: 'por m²',
+      avaliacao: avaliarFator(Number(dados.pragas), [0,2], [3,5], {
+        bom: 'Controle de pragas eficiente.',
+        medio: 'Atenção: presença de pragas moderada.',
+        ruim: 'Alto índice de pragas. Adote controle imediato.'
+      })
+    },
+    {
+      nome: 'Luminosidade',
+      valor: Number(dados.luz),
+      unidade: 'lux',
+      avaliacao: avaliarFator(Number(dados.luz), [5000,8000], [3500,4999], {
+        bom: 'Luminosidade adequada.',
+        medio: 'Luminosidade abaixo do ideal.',
+        ruim: 'Luminosidade insuficiente. Avaliar sombreamento.'
+      })
+    }
+  ];
+
+  // Nota geral simples (peso igual)
+  let nota = 0, recomendacoes = [];
+  fatores.forEach(f => {
+    if(f.avaliacao.status==="bom") nota += 2;
+    else if(f.avaliacao.status==="medio") {nota += 1; recomendacoes.push(f.nome);}
+    else recomendacoes.push(f.nome);
+  });
+  const notaFinal = (nota / (fatores.length*2) * 10).toFixed(1);
+
+  // Sugestão
+  let resumo = '';
+  if (notaFinal >= 8) resumo = 'Excelente produtividade!';
+  else if (notaFinal >= 6) resumo = 'Produtividade razoável. Melhorar: ' + recomendacoes.join(', ');
+  else resumo = 'Produtividade baixa. Atenção extra a: ' + recomendacoes.join(', ');
+
+  // Montar HTML de resultado
+  let html = `<h2>Resultados da Simulação</h2>`;
+  fatores.forEach(f => {
+    html += `
+      <div class="fator-row">
+        <div class="fator-nome">${f.nome}</div>
+        <div class="fator-valor">${f.valor} ${f.unidade} <span class="fator-status ${f.avaliacao.status}">${f.avaliacao.emoji} ${f.avaliacao.status.charAt(0).toUpperCase() + f.avaliacao.status.slice(1)}</span></div>
+        <div class="fator-comentario">${f.avaliacao.texto}</div>
       </div>
-      <div class="simulador-resumo">
-        <div class="nota-geral">
-          <span class="nota-label">Nota Geral:</span>
-          <span class="nota-valor ruim">6.8</span>
-        </div>
-        <div class="resumo-recomendacao">
-          <span>🔎 <strong>Resumo:</strong> A produtividade está razoável, mas pode ser melhorada.</span>
-          <p>
-            Recomenda-se atenção especial ao nível de nutrientes e à temperatura ambiente.
-            Melhore a adubação e, se possível, adote práticas para reduzir o estresse térmico nas plantas.
-          </p>
-        </div>
+    `;
+  });
+  html += `
+    <div class="simulador-resumo">
+      <div class="nota-geral">
+        <span class="nota-label">Nota Geral:</span>
+        <span class="nota-valor ${notaFinal>=8?'bom':notaFinal>=6?'medio':'ruim'}">${notaFinal}</span>
       </div>
-    </section>
-  </main>
+      <div class="resumo-recomendacao">
+        <span>🔎 <strong>Resumo:</strong> ${resumo}</span>
+      </div>
+    </div>
+  `;
+
+  const resultDiv = document.getElementById('resultadoSimulador');
+  resultDiv.innerHTML = html;
+  resultDiv.style.display = 'block';
+  resultDiv.scrollIntoView({behavior: "smooth"});
+};
+</script>
 
   <!-- Footer -->
   <footer class="site-footer">
