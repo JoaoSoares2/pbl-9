@@ -52,9 +52,9 @@
 
 <script>
 function avaliarFator(valor, bom, medio, labels) {
-  if (valor >= bom[0] && valor <= bom[1]) return {status: 'bom', emoji: '🟢', texto: labels.bom};
-  if (valor >= medio[0] && valor <= medio[1]) return {status: 'medio', emoji: '🟡', texto: labels.medio};
-  return {status: 'ruim', emoji: '🔴', texto: labels.ruim};
+  if (valor >= bom[0] && valor <= bom[1]) return {status: 'bom',emoji:'🟢', texto: labels.bom};
+  if (valor >= medio[0] && valor <= medio[1]) return {status: 'medio',emoji:'🟡', texto: labels.medio};
+  return {status:'ruim',emoji:'🔴', texto: labels.ruim};
 }
 
 document.getElementById('simuladorForm').onsubmit = function(e) {
