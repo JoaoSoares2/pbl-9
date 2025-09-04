@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="footer.css">
   <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" href="NewsPopup.jsx">
+  
 </head>
 <body>
   <!-- Header -->
@@ -16,6 +23,9 @@
       <p>Transformando o campo com tecnologia, dados e inovação. Descubra como a Agricultura 4.0 pode revolucionar sua produção!</p>
     </div>
   </header>
+
+
+  
 
   <main>
     <section class="home-intro">
@@ -108,5 +118,53 @@
     let pageName = pageNames[path] || document.title || "Home";
     document.getElementById("footerPageName").textContent = pageName;
   </script>
+  <div id="root"></div>
+  <!-- React scripts -->
+  <script src="main.js"></script>
+
+  <div
+    id="agrotech-popup"
+    style="
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 320px;
+      background: #fff;
+      border: 2px solid #19b464;
+      border-radius: 16px;
+      box-shadow: 0 8px 36px rgba(25,180,100,0.13), 0 2.5px 12px rgba(34,34,51,0.09);
+      z-index: 9999;
+      padding: 22px 18px 14px 18px;
+      font-family: 'Montserrat', Arial, sans-serif;
+    "
+  >
+    <h3 style="margin-top:0; margin-bottom:14px; color:#19b464; font-size:1.18em; font-weight:800; letter-spacing:0.01em;">
+      <span style="vertical-align:middle; margin-right:6px;">📰</span> Notícias AgroInteligente
+    </h3>
+    <div class="agrotech-news" style="margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid #e9f8ee;">
+      <div style="font-size:1.07em; color:#24303a; font-weight:600;">Startups amazônicas recebem R$ 45 mil para combater crise climática.</div>
+      <a href="https://globorural.globo.com/especiais/um-so-planeta/noticia/2025/09/startups-amazonicas-recebem-r-45-mil-para-combater-crise-climatica.ghtml" target="_blank"
+         class="btn btn-sm ms-2"
+         style="background-color:#19b464; color:#fff; border:none; border-radius:7px; font-weight:700; margin-top:7px; box-shadow:0 2px 8px rgba(25,180,100,0.09); letter-spacing:0.01em;">
+        Ver notícia
+      </a>
+    </div>
+    <div class="agrotech-news" style="margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid #e9f8ee;">
+      <div style="font-size:1.07em; color:#24303a; font-weight:600;">Safra de café 2025 cresce 1,8% e chega a 55,2 milhões de sacas.</div>
+      <a href="https://revistacultivar.com.br/noticias/safra-de-cafe-2025-cresce-1-8-e-chega-a-55-2-milhoes-de-sacas" target="_blank"
+         class="btn btn-sm ms-2"
+         style="background-color:#19b464; color:#fff; border:none; border-radius:7px; font-weight:700; margin-top:7px; box-shadow:0 2px 8px rgba(25,180,100,0.09); letter-spacing:0.01em;">
+        Ver notícia
+      </a>
+    </div>
+    <div class="agrotech-news" style="margin-bottom:0;">
+      <div style="font-size:1.07em; color:#24303a; font-weight:600;"> NeoSummit COP30 mostra os caminhos para o Brasil se firmar como potência verde. </div>
+      <a href="https://neofeed.com.br/neosummit-cop30/neosummit-cop30-mostra-os-caminhos-para-o-brasil-se-firmar-como-potencia-verde/" target="_blank"
+         class="btn btn-sm ms-2"
+         style="background-color:#19b464; color:#fff; border:none; border-radius:7px; font-weight:700; margin-top:7px; box-shadow:0 2px 8px rgba(25,180,100,0.09); letter-spacing:0.01em;">
+        Ver notícia
+      </a>
+    </div>
+  </div>
 </body>
 </html>
