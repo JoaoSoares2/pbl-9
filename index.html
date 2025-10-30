@@ -13,22 +13,35 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
   />
   <link rel="stylesheet" href="popupNoticias.jsx">
-  
+
+  <!-- jQuery (necessário para o toggle do pop-up) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <!-- Header -->
   <header style="position: relative;">
-  <a 
-    href="cadastro.html" 
-    class="home-link-btn" 
-    style="position: absolute; top: 24px; right: 32px; z-index: 10;"
-  >
-    Cadastro
-  </a>
+    <a 
+      href="cadastro.html" 
+      class="home-link-btn" 
+      style="position: absolute; top: 24px; right: 32px; z-index: 10;"
+    >
+      Cadastro
+    </a>
+
+    <!-- botão para abrir/fechar pop-up de notícias -->
+    <a
+      href="#"
+      id="newsToggle"
+      class="home-link-btn"
+      style="position: absolute; top: 24px; right: 170px; z-index: 11;"
+    >
+      Notícias
+    </a>
+
     <div class="banner-content">
-    <h1>AgroInteligente</h1>
-    <p>Transformando o campo com tecnologia, dados e inovação. Descubra como a Agricultura 4.0 pode revolucionar sua produção!</p>
-  </div>
+      <h1>AgroInteligente</h1>
+      <p>Transformando o campo com tecnologia, dados e inovação. Descubra como a Agricultura 4.0 pode revolucionar sua produção!</p>
+    </div>
   </header>
 
 
@@ -105,13 +118,13 @@
         <span class="footer-location">
           Você está em: <strong id="footerPageName">Home</strong>
         </span>
-        
       </div>
       <div class="footer-copy">
         © 2025 AgroInteligente. Todos os direitos reservados.
       </div>
     </div>
   </footer>
+
   <script>
     // Atualizar localização no footer
     const pageNames = {
@@ -125,6 +138,7 @@
     let pageName = pageNames[path] || document.title || "Home";
     document.getElementById("footerPageName").textContent = pageName;
   </script>
+
   <div id="root"></div>
   <!-- React scripts -->
   <script src="main.js"></script>
@@ -147,6 +161,7 @@
   >
     <h3 style="margin-top:0; margin-bottom:14px; color:#19b464; font-size:1.18em; font-weight:800; letter-spacing:0.01em;">
       <span style="vertical-align:middle; margin-right:6px;">📰</span> Notícias AgroInteligente
+      <button id="closePopup" style="float:right; background:transparent; border:none; font-size:1.05rem; cursor:pointer; color:#666;">✕</button>
     </h3>
     <div class="agrotech-news" style="margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid #e9f8ee;">
       <div style="font-size:1.07em; color:#24303a; font-weight:600;">Startups amazônicas recebem R$ 45 mil para combater crise climática.</div>
@@ -165,7 +180,7 @@
       </a>
     </div>
     <div class="agrotech-news" style="margin-bottom:0;">
-      <div style="font-size:1.07em; color:#24303a; font-weight:600;"> NeoSummit COP30 mostra os caminhos para o Brasil se firmar como potência verde. </div>
+      <div style="font-size:1.07em; color:#24303a; font-weight:600;">NeoSummit COP30 mostra os caminhos para o Brasil se firmar como potência verde.</div>
       <a href="https://neofeed.com.br/neosummit-cop30/neosummit-cop30-mostra-os-caminhos-para-o-brasil-se-firmar-como-potencia-verde/" target="_blank"
          class="btn btn-sm ms-2"
          style="background-color:#19b464; color:#fff; border:none; border-radius:7px; font-weight:700; margin-top:7px; box-shadow:0 2px 8px rgba(25,180,100,0.09); letter-spacing:0.01em;">
@@ -173,5 +188,32 @@
       </a>
     </div>
   </div>
+
+  <script>
+    // jQuery toggle para abrir/fechar o pop-up
+    $(function(){
+      // iniciar com popup visível (ou use $('#agrotech-popup').hide(); para manter escondido)
+      // toggle ao clicar no botão Notícias
+      $('#newsToggle').on('click', function(e){
+        e.preventDefault();
+        $('#agrotech-popup').fadeToggle(220);
+      });
+
+      // botão interno de fechar
+      $('#closePopup').on('click', function(e){
+        e.preventDefault();
+        $('#agrotech-popup').fadeOut(180);
+      });
+
+      // fechar ao clicar fora do popup (opcional)
+      $(document).on('click', function(e){
+        const $target = $(e.target);
+        if (!$target.closest('#agrotech-popup').length && !$target.is('#newsToggle')) {
+          // mantém o popup aberto se clicar no toggle
+          $('#agrotech-popup').fadeOut(200);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
